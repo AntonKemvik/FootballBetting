@@ -1,0 +1,143 @@
+<html>
+<head>
+  <script language="java">
+  </script>
+  <script>
+  function checkLogin(){
+    if(javametod){
+      window.location.href = "http://localhost:8080/homepage.html";
+    }
+    else{
+      document.getElementById("login").style.display="none";
+      document.getElementById("wrongLogin").style.display="table";
+      document.getElementById("createAccount").style.display="none";
+    }
+  }
+
+  function showLogin(){
+    document.getElementById("login").style.display="table";
+    document.getElementById("wrongLogin").style.display="none";
+    document.getElementById("createAccount").style.display="none";
+  }
+  function showCreateAccount(){
+    document.getElementById("login").style.display="none";
+    document.getElementById("wrongLogin").style.display="none";
+    document.getElementById("createAccount").style.display="table";
+  }
+  </script>
+
+  <title>Bet with friends: homepage</title>
+  <style>
+  #body{
+    background-image: url(http://unibet.hs.llnwd.net/e5/sites/default/files/gettyimages-514023838.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+    #titleText{
+      color: red;
+      font-size: 30px;
+      font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+    }
+    #errorText{
+      color: red;
+      font-size: 12px;
+      font-style: bold;
+      font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+      text-align: center;
+      padding: 10px;
+      margin: 0;
+    }
+    #normalText {
+      text-align: center;
+      padding: 10px;
+      font-style: italic;
+      color: #adb7bd;
+      font-family: 'Lucida Sans', Arial, sans-serif;
+      font-size: 12px;
+      margin: 0;
+    }
+    div.form{
+      width: 470;
+      background: rgb(255, 255, 255); /* Fallback for older browsers without RGBA-support */
+      background: rgba(30, 30, 30, 0.5);
+      margin-top: 400;
+      margin-right: 400;
+      text-align: center;
+      font-family: 'Lucida Sans', Arial, sans-serif;
+      color: red;
+      font-size:30;
+      display: table;
+      position:relative;
+      top: -295px;
+      padding: 10px;
+    }
+    div.form button{
+      width: 470;
+      font-family: "Roboto", sans-serif;
+      text-transform:
+      uppercase;outline: 0;
+      background: red;
+      border: 0;
+      padding: 15px;
+      color: white;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      onclick="javaScript:this.form.submit();"
+    }
+    div.form button:hover,.form button:active,.form button:focus {
+      background: #43A047;
+    }
+    div.form input{
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+  }
+  </style>
+</head>
+<body id="body" autocomplete="off" onload="form.reset();">
+
+  <div id="login" class="form" autocomplete="off">
+    <form action="JavaScript: checkLogin()" method="post">
+      <p id="titleText">FRIENDLY BETTING</p>
+      <p id="normalText">TYPE YOUR USERNAME AND PASSWORD TO SIGN IN</p>
+      <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
+      <br><input type="password" name="password" placeholder="password" required autocomplete="off">
+      <br><button>SIGN IN</button>
+      <p id="normalText" class="message">NOT REGISTERED? <a id"createAccount" href="#" onclick="showCreateAccount()" style="color:white">CREATE AN ACCOUNT</a></p>
+    </form>
+  </div>
+
+    <div id="wrongLogin" class="form" autocomplete="off" style="display:none;">
+      <form action="JavaScript: checkLogin()" method="post">
+        <p id="titleText">FRIENDLY BETTING </p>
+        <p id="errorText">INCORRECT USERNAME OR PASSWORD</p>
+        <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
+        <br><input type="password" name="password" placeholder="password" required autocomplete="off">
+        <br><button>SIGN IN</button>
+        <p id="normalText" class="message">NOT REGISTERED? <a id"createAccount" href="#" onclick="showCreateAccount()" style="color:white">CREATE AN ACCOUNT</a></p>
+      </form>
+    </div>
+
+  <div id="createAccount" class="form" autocomplete="off"style="display:none;">
+    <form action="login.html" method="post">
+      <p id="titleText">FRIENDLY BETTING</p>
+      <p id="normalText">CREATE YOUR ACCOUNT</p>
+      <input type="text"name="cUsername" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
+      <input type="password" name="cPassword" placeholder="password" required autocomplete="off">
+      <input type="email" name="cEmailaddress" placeholder="email address" required/>
+      <button>CREATE ACCOUNT</button>
+      <p id="normalText" class="message">ALREADY REGISTERED?  <a id"createAccount" href="#" onclick="showLogin()" style="color:white">LOG IN</a></p>
+    </form>
+  </div>
+
+</body>
