@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script language="java">
+  </script>
   <script>
-  function toggleTable(){
-    var elem=document.getElementById("login");
-    var elem2=document.getElementById("createAccount");
-    var hide = elem.style.display =="none";
-    var hide2 = elem2.style.display=="none";
-
-    if (hide) {
-      elem.style.display="table";
-      elem2.style.display="none";
+  function checkLogin(){
+    if(javametod){
+      window.location.href = "http://localhost:8080/homepage.html";
     }
-    else {
-      elem.style.display="none";
-      elem2.style.display="table";
+    else{
+      document.getElementById("login").style.display="none";
+      document.getElementById("wrongLogin").style.display="table";
+      document.getElementById("createAccount").style.display="none";
     }
+  }
+  function showLogin(){
+    document.getElementById("login").style.display="table";
+    document.getElementById("wrongLogin").style.display="none";
+    document.getElementById("createAccount").style.display="none";
+  }
+  function showCreateAccount(){
+    document.getElementById("login").style.display="none";
+    document.getElementById("wrongLogin").style.display="none";
+    document.getElementById("createAccount").style.display="table";
   }
   </script>
 
@@ -23,14 +30,27 @@
   <style>
   #body{
     background-image: url(http://unibet.hs.llnwd.net/e5/sites/default/files/gettyimages-514023838.jpg);
+    width: 1400px;
+    height:800px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    margin:auto;
+    padding:0;
     }
     #titleText{
       color: red;
       font-size: 30px;
       font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+    }
+    #errorText{
+      color: red;
+      font-size: 12px;
+      font-style: bold;
+      font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+      text-align: center;
+      padding: 10px;
+      margin: 0;
     }
     #normalText {
       text-align: center;
@@ -45,8 +65,9 @@
       width: 470;
       background: rgb(255, 255, 255); /* Fallback for older browsers without RGBA-support */
       background: rgba(30, 30, 30, 0.5);
-      margin-top: 400;
       margin-right: 400;
+      margin-top: 400;
+      top: 100px;
       text-align: center;
       font-family: 'Lucida Sans', Arial, sans-serif;
       color: red;
@@ -88,27 +109,29 @@
   </style>
 </head>
 <body id="body" autocomplete="off" onload="form.reset();">
-  <div id="login" class="form" autocomplete="off">
-    <form action="homepage.html" method="post">
-      <p id="titleText">WELCOME TO OUR BETTING </p>
+
+  <div id="login" class="form" autocomplete="off" style="display:table;">
+    <form action="login.do" method="post">
+      <p id="titleText">FRIENDLY BETTING</p>
       <p id="normalText">TYPE YOUR USERNAME AND PASSWORD TO SIGN IN</p>
       <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
       <br><input type="password" name="password" placeholder="password" required autocomplete="off">
       <br><button>SIGN IN</button>
-      <p id="normalText" class="message">NOT REGISTERED? <a id"createAccount" href="#" onclick="toggleTable()" style="color:white">CREATE AN ACCOUNT</a></p>
+      <p id="normalText" class="message">NOT REGISTERED? <a id"createAccount" href="#" onclick="showCreateAccount()" style="color:white">CREATE AN ACCOUNT</a></p>
     </form>
   </div>
 
   <div id="createAccount" class="form" autocomplete="off"style="display:none;">
     <form action="login.html" method="post">
-      <p id="titleText">WELCOME TO OUR BETTING </p>
+      <p id="titleText">FRIENDLY BETTING</p>
       <p id="normalText">CREATE YOUR ACCOUNT</p>
-      <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
-      <input type="password" name="password" placeholder="password" required autocomplete="off">
-      <input type="email" name="emailaddress" placeholder="email address" required/>
+      <input type="text"name="cUsername" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
+      <input type="password" name="cPassword" placeholder="password" required autocomplete="off">
+      <input type="email" name="cEmailaddress" placeholder="email address" required/>
       <button>CREATE ACCOUNT</button>
-      <p id="normalText" class="message">ALREADY REGISTERED? <a href="login.html"style="color:white">SIGN IN</a></p>
+      <p id="normalText" class="message">ALREADY REGISTERED?  <a id"createAccount" href="#" onclick="showLogin()" style="color:white">LOG IN</a></p>
     </form>
   </div>
 
 </body>
+</html>
