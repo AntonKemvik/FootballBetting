@@ -10,18 +10,15 @@
     }
     else{
       document.getElementById("login").style.display="none";
-      document.getElementById("wrongLogin").style.display="table";
       document.getElementById("createAccount").style.display="none";
     }
   }
   function showLogin(){
     document.getElementById("login").style.display="table";
-    document.getElementById("wrongLogin").style.display="none";
     document.getElementById("createAccount").style.display="none";
   }
   function showCreateAccount(){
     document.getElementById("login").style.display="none";
-    document.getElementById("wrongLogin").style.display="none";
     document.getElementById("createAccount").style.display="table";
   }
   </script>
@@ -72,9 +69,11 @@
       font-family: 'Lucida Sans', Arial, sans-serif;
       color: red;
       font-size:30;
-      display: table;
-      position:relative;
+      display: inline;
+      position:fixed;
       padding: 10px;
+      max-width:500;
+    
     }
     div.form button{
       width: 470;
@@ -114,20 +113,20 @@
     <form action="login.do" method="post">
       <p id="titleText">FRIENDLY BETTING</p>
       <p id="normalText">TYPE YOUR USERNAME AND PASSWORD TO SIGN IN</p>
-      <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
-      <br><input type="password" name="password" placeholder="password" required autocomplete="off">
+      <input type="text"name="username" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off"style="max-width:500">
+      <br><input type="password" name="password" placeholder="password" required autocomplete="off"style="max-width:500">
       <br><button>SIGN IN</button>
       <p id="normalText" class="message">NOT REGISTERED? <a id"createAccount" href="#" onclick="showCreateAccount()" style="color:white">CREATE AN ACCOUNT</a></p>
     </form>
   </div>
 
   <div id="createAccount" class="form" autocomplete="off"style="display:none;">
-    <form action="login.html" method="post">
+    <form action="create.do" method="post">
       <p id="titleText">FRIENDLY BETTING</p>
       <p id="normalText">CREATE YOUR ACCOUNT</p>
-      <input type="text"name="cUsername" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off">
-      <input type="password" name="cPassword" placeholder="password" required autocomplete="off">
-      <input type="email" name="cEmailaddress" placeholder="email address" required/>
+      <input type="text"name="cUsername" placeholder="username" autofocus=""autocomplete="off" required autocomplete="off"style="max-width:500">
+      <input type="password" name="cPassword" placeholder="password" required autocomplete="off"style="max-width:500">
+      <input type="email" name="cEmailaddress" placeholder="email address" required/style="max-width:500">
       <button>CREATE ACCOUNT</button>
       <p id="normalText" class="message">ALREADY REGISTERED?  <a id"createAccount" href="#" onclick="showLogin()" style="color:white">LOG IN</a></p>
     </form>
