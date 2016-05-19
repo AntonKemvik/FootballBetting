@@ -4,6 +4,7 @@ import java.io.File;
 
 import API2.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -18,16 +19,24 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import MatchPack.Match;
+import MatchPack.*;
 
 public class Login extends HttpServlet {
-
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+    
+	protected static Player activeuser;
+	
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String[] User = req.getParameterValues("username");
 		String[] Pass = req.getParameterValues("password");
-
-		if (User[0].equals("nils")) {
+		
+		
+       
+        AllPlayers loginplayer = new AllPlayers();
+        loginplayer.readFromFile();
+        Player user = loginplayer.getPlayerByName(User[0]);
+        
+		if (user != null && user.getPassword().equals(Pass[0])) {
 			PreMatchCompiler pre = new PreMatchCompiler();
 			ArrayList<Match> matches = pre
 					.run(new URL(
@@ -35,7 +44,8 @@ public class Login extends HttpServlet {
 			File input = new File(
 					"C:\\Users\\Stoffe\\workspace\\Betting\\WebContent\\homepage.html");
 			Document doc = Jsoup.parse(input, null);
-			for (int i = 0; i < 10; i++) {
+			System.out.print(matches.size());
+			for (int i = 0; i < matches.size(); i++) {
 				Element content = doc.getElementById("match" + (i + 1));
 				content.attr("style", "display:visible");
 				content.child(0).text("league");
@@ -46,6 +56,7 @@ public class Login extends HttpServlet {
 			PrintWriter output = resp.getWriter();
 			output.write(doc.html());
 			output.close();
+			activeuser = user;
 		} else {
 			File input = new File(
 					"C:\\Users\\Stoffe\\workspace\\Betting\\WebContent\\login.html");

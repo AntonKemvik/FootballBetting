@@ -1,24 +1,18 @@
 package MatchPack;
 
 public class Player {
-	private String name;
+	private String name, password;
 	private int points;
 
-	public Player(String name) {
-		this.name = name;
-		points = 0;
-
-	}
-
-	public Player(String name, int points) {
+	public Player(String name, String password, int points) {
 		this.name = name;
 		this.points = points;
+		this.password = password;
 
 	}
 
 	public void addPoint() {
 		points++;
-
 	}
 
 	public int getPoints() {
@@ -34,5 +28,9 @@ public class Player {
 			return true;
 		}
 		return false;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }

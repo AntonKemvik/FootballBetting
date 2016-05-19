@@ -24,5 +24,15 @@
     <url-pattern>/create.do</url-pattern>
 </servlet-mapping>
 
+  <servlet>
+    <servlet-name>PlaceBets</servlet-name>
+    <servlet-class>Betting.PlaceBets</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>PlaceBets</servlet-name>
+    <url-pattern>/placebets.do</url-pattern>
+</servlet-mapping>
+
 </web-app>
 <?target data?>

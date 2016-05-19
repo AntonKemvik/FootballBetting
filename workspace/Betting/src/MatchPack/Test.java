@@ -17,35 +17,48 @@ public class Test {
 		myUrlCon.addRequestProperty("X-Auth-Token", "8694272ad6134ac2995601c6a46c1f68");
 		InputStream is = myUrlCon.getInputStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
-		System.out.println(br.readLine());
 
-		Player p1 = new Player("Isak");
-		Player p2 = new Player("Nils");
-		Player p3 = new Player("Anton");
-		Player p4 = new Player("Kringlan");
+		Player p1 = new Player("Isak", "pw" , 0);
+		Player p2 = new Player("Nils", "pw", 0);
+		Player p3 = new Player("Anton", "pw", 0);
+		Player p4 = new Player("Kringlan", "pw", 0);
 		AllPlayers players = new AllPlayers();
-
+		AllMatches matches = new AllMatches();
+		Match match = new Match("hemma", "borta", "datum", 39, 0, 0, "Played");
+		matches.addMatch(match);
+		AllBets bets = new AllBets(players, matches);
+		bets.addBet(new Bet(p1, match, "1" ));
+		bets.addBet(new Bet(p2, match, "1" ));
+		
+		System.out.println(bets.saveToFile());
 		players.addPlayer(p2);
 		players.addPlayer(p4);
 		players.addPlayer(p3);
 		players.addPlayer(p1);
-
-		p1.addPoint();
-		p1.addPoint();
-		p1.addPoint();
-		p1.addPoint();
-		p2.addPoint();
-		p2.addPoint();
-		p2.addPoint();
-		p3.addPoint();
-		p3.addPoint();
-		p4.addPoint();
-		for (Player p : players.getScoreboard()) {
-			System.out.println(p.getName() + " " + p.getPoints());
+	
+		
+		if(players.writeToFile()){
+			System.out.println("Saving completed");
 		}
-		for ( Player p : players.getAllPlayers()){
-			System.out.println(p.getName() + p.getPoints());
-		}
-		players.saveToFile();
+		
+		// ALLTID LÄSA IN SPELARNA & MATCHERNA INNAN BETTEN. ANNARS KRASCH
+//		if(players.readFromFile()){
+//			System.out.println("Loading compleded");
+//		}
+//		for(Player p: players.getAllPlayers()){
+//			System.out.println(p.getName() + " " + p.getPassword() + " " + p.getPoints());
+//		}
+	
+		
+		
+		
+		
+//		for (Player p : players.getScoreboard()) {
+//			System.out.println(p.getName() + " " + p.getPoints());
+//		}
+//		for ( Player p : players.getAllPlayers()){
+//			System.out.println(p.getName() + p.getPoints());
+//		}
+//		players.saveToFile();
 	}
 }

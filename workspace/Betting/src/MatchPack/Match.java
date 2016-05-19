@@ -1,54 +1,60 @@
 package MatchPack;
 
 public class Match {
-	private String homeTeam, awayTeam, date;
+	private String homeTeam, awayTeam, date, status;
 	private int homeGoals, awayGoals, matchDay;
-	private boolean status;
-	
-	public Match(String homeTeam, String awayTeam, String date, int matchDay){
+
+//	public Match(String homeTeam, String awayTeam, String date, int matchDay) {
+//		this.homeTeam = homeTeam;
+//		this.awayTeam = awayTeam;
+//		this.date = date;
+//		this.matchDay = matchDay;
+//	}
+
+	public Match(String homeTeam, String awayTeam, String date, int matchDay, int homeGoals, int awayGoals, String status) {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
-		this.date = date; 
-		this.matchDay = matchDay;
-	}
-	public Match (String homeTeam, String awayTeam, String date, int matchDay, int homeGoals, int awayGoals){
-		this.homeTeam = homeTeam;
-		this.awayTeam = awayTeam;
-		this.date = date; 
+		this.date = date;
 		this.matchDay = matchDay;
 		this.homeGoals = homeGoals;
 		this.awayGoals = awayGoals;
 	}
-	
-	public String getHomeTeam(){
+
+	public String getHomeTeam() {
 		return homeTeam;
 	}
-	public String getAwayTeam(){
+
+	public String getAwayTeam() {
 		return awayTeam;
 	}
-	public String getDate(){
+
+	public String getDate() {
 		return date;
 	}
-	public int getMatchDay(){
+
+	public int getMatchDay() {
 		return matchDay;
 	}
-	public int getHomeGoals(){
+
+	public int getHomeGoals() {
 		return homeGoals;
 	}
-	public int getAwayGoals(){
+
+	public int getAwayGoals() {
 		return awayGoals;
 	}
-	public boolean getStatus(){
+
+	public String getStatus() {
 		return status;
 	}
-	
-	public void setStatus(boolean status){
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	public boolean equals(Match m){
-		if(m.getHomeTeam().equals(getHomeTeam()) && m.getAwayTeam().equals(getAwayTeam())
-				&& m.getDate().equals(getDate())){
+
+	public boolean equals(Match m) {
+		if (m.getHomeTeam().equals(getHomeTeam()) && m.getAwayTeam().equals(getAwayTeam())
+				&& m.getDate().equals(getDate())) {
 			return true;
 		}
 		return false;
