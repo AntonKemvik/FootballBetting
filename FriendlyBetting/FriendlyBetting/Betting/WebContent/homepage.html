@@ -1,0 +1,817 @@
+<html>
+<!DOCTYPE html>
+<script id="script1">
+function showHome() {
+  document.getElementById("homeDiv").style.display = "table";
+  document.getElementById("manageDiv").style.display = "none";
+  document.getElementById("leaguesDiv").style.display = "none";
+  document.getElementById("betDiv").style.display = "none";
+  document.getElementById("home").className = 'active';
+  document.getElementById("manage").className = 'none';
+  document.getElementById("leagues").className = "none";
+  document.getElementById("bet").className = "none";
+}
+function showManage() {
+  document.getElementById("homeDiv").style.display = "none";
+  document.getElementById("manageDiv").style.display = "table";
+  document.getElementById("leaguesDiv").style.display = "none";
+  document.getElementById("betDiv").style.display = "none";
+  document.getElementById("home").className = 'none';
+  document.getElementById("manage").className = 'active';
+  document.getElementById("leagues").className = "none";
+  document.getElementById("bet").className = "none";
+}
+function showLeagues() {
+  document.getElementById("homeDiv").style.display = "none";
+  document.getElementById("manageDiv").style.display = "none";
+  document.getElementById("leaguesDiv").style.display = "table";
+  document.getElementById("betDiv").style.display = "none";
+  document.getElementById("home").className = 'none';
+  document.getElementById("manage").className = 'none';
+  document.getElementById("leagues").className = "active";
+  document.getElementById("bet").className = "none";
+}
+function showBets() {
+  document.getElementById("homeDiv").style.display = "none";
+  document.getElementById("manageDiv").style.display = "none";
+  document.getElementById("leaguesDiv").style.display = "none";
+  document.getElementById("betDiv").style.display = "table";
+  document.getElementById("home").className = 'none';
+  document.getElementById("manage").className = 'none';
+  document.getElementById("leagues").className = "none";
+  document.getElementById("bet").className = 'active';
+}
+function saveBets(){
+  document.getElementById("select1").disabled=true;
+  document.getElementById("select2").disabled=true;
+  document.getElementById("select3").disabled=true;
+  document.getElementById("select4").disabled=true;
+  document.getElementById("select5").disabled=true;
+  document.getElementById("select6").disabled=true;
+  document.getElementById("select7").disabled=true;
+  document.getElementById("select8").disabled=true;
+  document.getElementById("select9").disabled=true;
+  document.getElementById("select0").disabled=true;
+  document.getElementById("confirmButton").innerHTML="CHANGE BETS";
+}
+function unsaveBets(){
+  document.getElementById("select1").disabled=false;
+  document.getElementById("select2").disabled=false;
+  document.getElementById("select3").disabled=false;
+  document.getElementById("select4").disabled=false;
+  document.getElementById("select5").disabled=false;
+  document.getElementById("select6").disabled=false;
+  document.getElementById("select7").disabled=false;
+  document.getElementById("select8").disabled=false;
+  document.getElementById("select9").disabled=false;
+  document.getElementById("select0").disabled=false;
+  document.getElementById("confirmButton").innerHTML="CONFIRM BETS";
+}
+function toggleLock(){
+  if(document.getElementById("select1").disabled==true){
+    unsaveBets();
+  }else{
+    saveBets();
+  }
+}
+function getValue(nbr){
+  var sel = document.getElementById("select" + nbr);
+  var opt = sel.options[sel.selectedIndex];
+  var vb = document.getElementById("valueselect"+nbr);
+  document.getElementById("valueselect" + nbr).value = opt.value; 
+  var va = document.getElementById("valueselect"+nbr);
+}
+</script>
+
+<head>
+  <title>Bet with friends: homepage</title>
+  <style>
+  #body {
+    background-image: url(https://metrouk2.files.wordpress.com/2013/01/ay101374622liverpool-fans-r.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    link="blue";
+  }
+  #titleText {
+    color: black;
+    font-size: 30;
+    text-align: center;
+    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  }
+  #normalText {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+  }
+  #infoText {
+    color: #adb7bd;
+    font-size: 12;
+    font-style: italic;
+    text-align: center;
+    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  }
+  div.title {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    margin-left: 200;
+    margin-right: 200;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    font-size: 50;
+  }
+  div.form {
+    top: -33;
+    text-align: center;
+    margin: 0 auto;
+      width: 67%;
+    border: 1px solid black;
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    /* Fallback for older browsers without RGBA-support */
+    background: rgba(30, 30, 30, 0.2);
+    text-align: center;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    color: #adb7bd;
+    padding: 20px;
+    font-size: 20;
+    display: table;
+    position: relative;
+    border: 3px solid black;
+    border-radius: 3px;
+  }
+  div.form button {
+    position: relative;
+    top: -44; /*ÄNDRA HÄR FÖR ATT FLYTTA KNAPPEN UPP/NER*/
+    display: inline-block;
+    color: black;
+    border: 1px solid black;
+    border-radius: 1px;
+    background-color:#adb7bd;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    float: right;
+    padding: 13px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .countdown {
+    position: relative;width:
+    display: inline-block;
+    width: 30%;
+    color: black;
+    border: 1px solid black;
+    border-radius: 1px;
+    background-color: #adb7bd;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-align: center;
+  }
+  div.form button:hover,
+  .form button:active,
+  .form button:focus {
+    background: grey;
+  }
+  div.form button:hover,
+  .form button:disabled,
+  .form button:focus {
+    background: #43A047;
+  }
+  div.form input {
+    text-transform: uppercase;
+    width: 15;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: inherit;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    display: inline-block;
+  }
+  @import url(http://fonts.googleapis.com/css?family=Oswald);
+  #cssmenu,
+  #cssmenu ul,
+  #cssmenu ul li,
+  #cssmenu ul li a,
+  #cssmenu #menu-button {
+    margin: 0 auto;
+    text-align: center;
+    position: center;
+    list-style: none;
+    position: relative;
+    height: 100px;
+  }
+  #cssmenu:after,
+  #cssmenu > ul:after {
+    content: ".";
+    display: inline-block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+  #cssmenu #menu-button {
+    display: none;
+  }
+  #cssmenu {
+    top: -30;
+    margin: 0 auto;
+    width: 44%;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 3px;
+    font-family: 'Oswald', sans-serif;
+    line-height: 1;
+    background: rgb(255, 255, 255);
+    /* Fallback for older browsers without RGBA-support */
+    background: rgba(30, 30, 30, 0.2);
+    text-align: center;
+
+  }
+  #cssmenu > ul > li {
+    float: left;
+  }
+  #cssmenu.align-center > ul {
+    font-size: 0;
+    text-align: center;
+  }
+  #cssmenu.align-center > ul > li {
+    display: inline-block;
+    float: none;
+  }
+  #cssmenu.align-right > ul > li {
+    float: right;
+  }
+  #cssmenu > ul > li > a {
+    padding: 20px 25px;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  #cssmenu > ul > li > a:hover,
+  #cssmenu > ul > li:hover > a,
+  #cssmenu > ul > li.active > a {
+    color: black;
+  }
+  #cssmenu #menu-indicator {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 0;
+    width: 0;
+    border: 5px solid transparent;
+    border-bottom-color: #fd8a17;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  #cssmenu.small-screen {
+    width: 100%;
+  }
+  #cssmenu.small-screen > ul,
+  #cssmenu.small-screen.align-center > ul {
+    width: 100%;
+    text-align: left;
+  }
+  #cssmenu.small-screen > ul > li,
+  #cssmenu.small-screen.align-center > ul > li {
+    float: none;
+    display: block;
+    border-top: 1px solid rgba(100, 100, 100, 0.1);
+  }
+  #cssmenu.small-screen > ul > li > a {
+    padding: 18px 25px;
+  }
+  #cssmenu.small-screen > ul > li:after,
+  #cssmenu.small-screen > ul > li:before {
+    display: none;
+  }
+  #cssmenu.small-screen #menu-button {
+    display: block;
+    padding: 18px 25px;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fd8a17;
+    background: url('images/bg.png');
+  }
+  #cssmenu.small-screen #menu-button.menu-opened {
+    color: #444444;
+  }
+  #cssmenu.small-screen #menu-button:after {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 19.5px;
+    display: block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border-top: 2px solid #fd8a17;
+    border-bottom: 2px solid #fd8a17;
+    width: 18px;
+    height: 3px;
+  }
+  #cssmenu.small-screen #menu-button.menu-opened:after {
+    border-top: 2px solid #444444;
+    border-bottom: 2px solid #444444;
+  }
+  #cssmenu.small-screen #menu-button:before {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 29.5px;
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #fd8a17;
+  }
+  #cssmenu.small-screen #menu-button.menu-opened:before {
+    background: #444444;
+  }
+  #cssmenu.small-screen #menu-indicator {
+    display: none;
+  }
+  #nav ul.sub-nav {
+    display: none;
+  }
+  #nav ul.visible {
+    display: inline-block;
+  }
+  .table {
+    BORDER: 5;
+    background-color: black;
+    color: black;
+    WIDTH: 100%;
+    CELLPADDING: 4;
+    CELLSPACING: 3;
+    ALLIGN: center;
+  }
+  tr:nth-child(even) {
+    background-color: #adb7bd;
+  }
+  tr:nth-child(odd) {
+    background-color: grey;
+  }
+  tr:not(:nth-child(1)):hover {
+    background-color: yellow;
+  }
+  .countdown tr:nth-child(even) {
+    background-color: transparent;
+  }
+  .countdown tr:nth-child(odd) {
+    background-color: transparent;
+  }
+  .countdown tr:hover {
+    background-color: transparent;
+  }
+  .dropdown {
+    background-color: inherit;
+    border-color: transparent;
+    display: grid;
+    text-align: center;
+  }
+  select {
+    text-align-last: center;
+  }
+  select:disabled{
+    color: black;
+    opacity: 0.5;
+  }
+}
+</style>
+</head>
+
+<body id="body">
+ <p id="titleText">FRIENDLY BETTING</p>
+  <div id='cssmenu'>
+    <ul class="main-nav">
+      <li id="home" class='active'> <a href='#' onclick="showHome()">HOME</a></li>
+      <li id="leagues"> <a href='#' onclick="showLeagues()">LEADERBOARD</a></li>
+      <li id="bet"> <a href='#' onclick="showBets()">PLACE BETS</a></li>
+      <li id="logout"> <a href='login.html' onclick="toggleTable(logout)">LOG OUT</a></li>
+    </ul>
+  </div>
+
+  <div id="homeDiv" class='form'>
+    FRIENDLY BETTING
+    <p id="infoText"> A SIMPLIFIED BETTING SITE WHERE YOU BET ON FOOTBALL MATCHES
+      <p id="infoText"> YOU <a href='#' style="color:white" onclick="showBets()"> BET</a> 1/X/2 ON A NUMBER OF MATCHES FROM A FOOTBALL LEAGUE</p>
+      <p id="infoText"> A CORRECT BET WILL GAIN YOU 1 POINT. HEAD OVER TO <a href='#' style="color:white" onclick="showLeagues()"> LEAGUES</a> TO SEE HOW YOU DO </p>
+      <p id="infotext">COMPARED TO YOUR FRIENDS</p>
+      <br>
+      THE SOURCE CODE
+      <p id="infotext">THE SOURCE CODE CAN BE FOUND ON <a href='https://github.com/AntonKemvik/FootballBetting' style="color:white"> GITHUB</a></p>
+      <br>
+      THE GROUP
+      <p id="infotext"> THIS WEBSITE IS CREATED BY ANTON KEMVIK, NILS GOKSÖR, ISAK AMUNDSSON OCH KRISTOFFER MÅRTENSSON</P>
+    </div>
+    <div id="manageDiv" class='form' style="display:none;">
+      FRIENDLY BETTING
+      <p id="infoText">NOT IMPLEMENTED AT THIS TIME</p>
+    </div>
+    <div id="leaguesDiv" class='form' style="display:none;">
+      CURRENT STANDING IN YOUR LEAGUE
+      <TABLE class="table">
+        <TR ALIGN="CENTER">
+          <TH>RANK</TH>
+          <TH>USERNAME</TH>
+          <TH>POINTS</TH>
+        </TR>
+        <TR id="rank1" ALIGN="CENTER">
+          <TD>1</TD>
+          <TD>Nils</TD>
+          <TD>9</TD>
+        </TR>
+        <TR id="rank2" ALIGN="CENTER">
+          <TD>2</TD>
+          <TD>KRICKAN123</TD>
+          <TD>4</TD>
+        </TR>
+        <TR id="rank3" ALIGN="CENTER">
+          <TD>3</TD>
+          <TD>ANTON</TD>
+          <TD>2</TD>
+        </TR>
+        <TR id="rank4" ALIGN="CENTER">
+          <TD>4</TD>
+          <TD>ISAK</TD>
+          <TD>2</TD>
+        </TR>
+      </TABLE>
+    </div>
+
+    <div id="betDiv" class='form' style="display:none;">
+      <form action="placebets.do" method="post">
+        <TABLE class="table">
+          <!-- HEADER -->
+          <TR ALIGN="CENTER">
+            <TH>LEAGUE</TH>
+            <TH>KICKOFF</TH>
+            <TH>HOME</TH>
+            <TH>AWAY</TH>
+            <TH>1/X/2</TH>
+          </TR>
+          <!-- MATCH1 -->
+          <TR id="match1" ALIGN="CENTER"style="display:none">
+            <TD id="league1">PREMIER LEAGUE</TD>
+            <TD id="kickoff1">SATURDAY 26/4: 15:00</TD>
+            <TD id="home11">Liverpool</TD>
+            <TD id="home12">Arsenal</TD>
+            <TD id="bet1">
+              <select id="select1" class="dropdown" onchange="getValue(1)" type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect1" name="valueselect1" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH2 -->
+          <TR id="match2" ALIGN="CENTER"style="display:none">
+            <TD id="league2">PREMIER LEAGUE</TD>
+            <TD id="kickoff2">SATURDAY 26/4: 15:00</TD>
+            <TD id="home21">Liverpool</TD>
+            <TD id="home22">Arsenal</TD>
+            <TD id="bet2">
+              <select id="select2" class="dropdown"onchange="getValue(2)" type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect2" name="valueselect2" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH3 -->
+          <TR id="match3" ALIGN="CENTER"style="display:none">
+            <TD id="league3">PREMIER LEAGUE</TD>
+            <TD id="kickoff3">SATURDAY 26/4: 15:00</TD>
+            <TD id="home31">Liverpool</TD>
+            <TD id="home32">Arsenal</TD>
+            <TD id="bet3">
+              <select id="select3" class="dropdown"onchange="getValue(3)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect3" name="valueselect3" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH4 -->
+          <TR id="match4" ALIGN="CENTER"style="display:none">
+            <TD id="league4">PREMIER LEAGUE</TD>
+            <TD id="kickoff4">SATURDAY 26/4: 15:00</TD>
+            <TD id="home41">Liverpool</TD>
+            <TD id="home42">Arsenal</TD>
+            <TD id="bet4">
+              <select id="select4" class="dropdown"onchange="getValue(4)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect4" name="valueselect4" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH5 -->
+          <TR id="match5" ALIGN="CENTER"style="display:none">
+            <TD id="league5">PREMIER LEAGUE</TD>
+            <TD id="kickoff5">SATURDAY 26/4: 15:00</TD>
+            <TD id="home51">Liverpool</TD>
+            <TD id="home52">Arsenal</TD>
+            <TD id="bet5">
+              <select id="select5" class="dropdown"onchange="getValue(5)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect5" name="valueselect5" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH6 -->
+          <TR id="match6" ALIGN="CENTER"style="display:none">
+            <TD id="league6">PREMIER LEAGUE</TD>
+            <TD id="kickoff6">SATURDAY 26/4: 15:00</TD>
+            <TD id="home61">Liverpool</TD>
+            <TD id="home62">Arsenal</TD>
+            <TD id="bet6">
+              <select id="select6" class="dropdown"onchange="getValue(6)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect6" name="valueselect6" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH7 -->
+          <TR id="match7" ALIGN="CENTER"style="display:none">
+            <TD id="league7">PREMIER LEAGUE</TD>
+            <TD id="kickoff7">SATURDAY 26/4: 15:00</TD>
+            <TD id="home71">Liverpool</TD>
+            <TD id="home72">Arsenal</TD>
+            <TD id="bet7">
+              <select id="select7" class="dropdown"onchange="getValue(7)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect7" name="valueselect7" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH8 -->
+          <TR id="match8" ALIGN="CENTER"style="display:none">
+            <TD id="league8">PREMIER LEAGUE</TD>
+            <TD id="kickoff8">SATURDAY 26/4: 15:00</TD>
+            <TD id="home81">Liverpool</TD>
+            <TD id="home82">Arsenal</TD>
+            <TD id="bet8">
+              <select id="select8" class="dropdown"onchange="getValue(8)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect8" name="valueselect8" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH9 -->
+          <TR id="match9" ALIGN="CENTER"style="display:none">
+            <TD id="league9">PREMIER LEAGUE</TD>
+            <TD id="kickoff9">SATURDAY 26/4: 15:00</TD>
+            <TD id="home91">Liverpool</TD>
+            <TD id="home92">Arsenal</TD>
+            <TD id="bet9">
+              <select id="select9" class="dropdown"onchange="getValue(9)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect9" name="valueselect9" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH10 -->
+          <TR id="match10" ALIGN="CENTER"style="display:none">
+            <TD id="league10">PREMIER LEAGUE</TD>
+            <TD id="kickoff10">SATURDAY 26/4: 15:00</TD>
+            <TD id="home101">Liverpool</TD>
+            <TD id="home102">Arsenal</TD>
+            <TD id="bet10">
+              <select id="select10" class="dropdown"onchange="getValue(10)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect10" name="valueselect10" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH11 -->
+          <TR id="match11" ALIGN="CENTER"style="display:none">
+            <TD id="league11">PREMIER LEAGUE</TD>
+            <TD id="kickoff11">SATURDAY 26/4: 15:00</TD>
+            <TD id="home111">Liverpool</TD>
+            <TD id="home112">Arsenal</TD>
+            <TD id="bet11">
+              <select id="select11" class="dropdown"onchange="getValue(11)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect11" name="valueselect11" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+          <!-- MATCH12 -->
+          <TR id="match12" ALIGN="CENTER"style="display:none">
+            <TD id="league12">PREMIER LEAGUE</TD>
+            <TD id="kickoff12">SATURDAY 26/4: 15:00</TD>
+            <TD id="home121">Liverpool</TD>
+            <TD id="home122">Arsenal</TD>
+            <TD id="bet11">
+              <select id="select11" class="dropdown"onchange="getValue(12)"type="input">
+                <option value="" disabled selected hidden>BET</option>
+                <option value="1">1</option>
+                <option value="X">X</option>
+                <option value="2">2</option>
+                <input type="hidden" id="valueselect12" name="valueselect12" value="9"></input>
+              </select>
+            </TD>
+          </TR>
+        <!-- MATCH13 -->
+        <TR id="match13" ALIGN="CENTER"style="display:none">
+          <TD id="league13">PREMIER LEAGUE</TD>
+          <TD id="kickoff13">SATURDAY 26/4: 15:00</TD>
+          <TD id="home131">Liverpool</TD>
+          <TD id="home132">Arsenal</TD>
+          <TD id="bet13">
+            <select id="select13" class="dropdown"onchange="getValue(13)"type="input">
+              <option value="" disabled selected hidden>BET</option>
+              <option value="1">1</option>
+              <option value="X">X</option>
+              <option value="2">2</option>
+              <input type="hidden" id="valueselect13" name="valueselect13" value="9"></input>
+            </select>
+          </TD>
+        </TR>
+        <!-- MATCH14 -->
+        <TR id="match14" ALIGN="CENTER"style="display:none">
+          <TD id="league14">PREMIER LEAGUE</TD>
+          <TD id="kickoff14">SATURDAY 26/4: 15:00</TD>
+          <TD id="home141">Liverpool</TD>
+          <TD id="home142">Arsenal</TD>
+          <TD id="bet14">
+            <select id="select14" class="dropdown"onchange="getValue(14)"type="input">
+              <option value="" disabled selected hidden>BET</option>
+              <option value="1">1</option>
+              <option value="X">X</option>
+              <option value="2">2</option>
+              <input type="hidden" id="valueselect14" name="valueselect14" value="9"></input>
+            </select>
+          </TD>
+        </TR>
+        </TABLE>
+        <p id="infoText">YOU HAVE TO CONFIRM YOUR BETS BEFORE THE MATCHDAY START</p>
+
+        <table class="countdown" id="coutdown" border="0">
+          <tr>
+            <td align="center" colspan="6">
+              <div class="numbers" id="count2" style="padding: 10px; "></div>
+            </td>
+          </tr>
+          <tr id="spacer1">
+            <td align="center">
+              <div class="clock"></div>
+            </td>
+            <td align="center">
+              <div class="clock" id="days">Days</div>
+            </td>
+            <td align="center">
+              <div class="clock" id="hours">Hours</div>
+            </td>
+            <td align="center">
+              <div class="clock" id="minutes">Minutes</div>
+            </td>
+            <td align="center">
+              <div class="clock" id="seconds">Seconds</div>
+            </td>
+            <td align="center">
+              <div class="clock"></div>
+            </td>
+          </tr>
+          <tr id="spacer2">
+            <td align="center">
+              <div class="clock"></div>
+            </td>
+            <td align="center">
+              <div class="numbers" id="dday"></div>
+            </td>
+            <td align="center">
+              <div class="numbers" id="dhour"></div>
+            </td>
+            <td align="center">
+              <div class="numbers" id="dmin"></div>
+            </td>
+            <td align="center">
+              <div class="numbers" id="dsec"></div>
+            </td>
+            <td align="center">
+              <div class="clock"></div>
+            </td>
+          </tr>
+        </table>
+        <button id="confirmButton">CONFIRM BETS</button>
+      </form>
+      <form action="Update.do" method="post">
+          <button>simulate</button>
+        </form>
+      <script id="script2">
+      /*  Change the items below to create your countdown target date and announcement once the target date and time are reached.  */
+      var current = "MATCHDAY HAS BEGUN!"; //—>enter what you want the script to display when the target date and time are reached, limit to 20 characters
+      var year = 2017; //—>Enter the count down target date YEAR
+      var month = 05; //—>Enter the count down target date MONTH
+      var day = 17; //—>Enter the count down target date DAY
+      var hour = 13; //—>Enter the count down target date HOUR (24 hour clock)
+      var minute = 15; //—>Enter the count down target date MINUTE
+      var tz = +2; //—>Offset for your timezone in hours from UTC (see http://wwp.greenwichmeantime.com/index.htm to find the timezone offset for your location)
+      //—>    DO NOT CHANGE THE CODE BELOW!    <—
+      var montharray = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+      function countdown(yr, m, d, hr, min) {
+        theyear = yr;
+        themonth = m;
+        theday = d;
+        thehour = hr;
+        theminute = min;
+        var today = new Date();
+        var todayy = today.getYear();
+        if (todayy < 1000) {
+          todayy += 1900;
+        }
+        var todaym = today.getMonth();
+        var todayd = today.getDate();
+        var todayh = today.getHours();
+        var todaymin = today.getMinutes();
+        var todaysec = today.getSeconds();
+        var todaystring1 = montharray[todaym] + " " + todayd + ", " + todayy + " " + todayh + ":" + todaymin + ":" + todaysec;
+        var todaystring = Date.parse(todaystring1) + (tz * 1000 * 60 * 60);
+        var futurestring1 = (montharray[m - 1] + " " + d + ", " + yr + " " + hr + ":" + min);
+        var futurestring = Date.parse(futurestring1) - (today.getTimezoneOffset() * (1000 * 60));
+        var dd = futurestring - todaystring;
+        var dday = Math.floor(dd / (60 * 60 * 1000 * 24) * 1);
+        var dhour = Math.floor((dd % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+        var dmin = Math.floor(((dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
+        var dsec = Math.floor((((dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
+        if (dday <= 0 && dhour <= 0 && dmin <= 0 && dsec <= 0) {
+          document.getElementById('count2').innerHTML = current;
+          document.getElementById('count2').style.display = "block";
+          //document.getElementById('count2').style.width = "100px";
+          document.getElementById('dday').style.display = "none";
+          document.getElementById('dhour').style.display = "none";
+          document.getElementById('dmin').style.display = "none";
+          document.getElementById('dsec').style.display = "none";
+          document.getElementById('days').style.display = "none";
+          document.getElementById('hours').style.display = "none";
+          document.getElementById('minutes').style.display = "none";
+          document.getElementById('seconds').style.display = "none";
+          document.getElementById('spacer1').style.display = "none";
+          document.getElementById('spacer2').style.display = "none";
+          document.getElementById("confirmButton").style.visibility="hidden";
+          saveBets();
+          return;
+        } else {
+          document.getElementById('count2').style.display = "none";
+          document.getElementById('dday').innerHTML = dday;
+          document.getElementById('dhour').innerHTML = dhour;
+          document.getElementById('dmin').innerHTML = dmin;
+          document.getElementById('dsec').innerHTML = dsec;
+          setTimeout("countdown(theyear,themonth,theday,thehour,theminute)", 1000);
+        }
+      }
+      countdown(year, month, day, hour, minute);
+      </script>
+    </div>
+  </body>
+
+  </html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Betting</display-name>
+  <welcome-file-list>
+  	<welcome-file>login.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>BettingUser</servlet-name>
+    <servlet-class>Betting.Login</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>BettingUser</servlet-name>
+    <url-pattern>/login.do</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+    <servlet-name>CreatePlayer</servlet-name>
+    <servlet-class>Betting.PlayerCreation</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>CreatePlayer</servlet-name>
+    <url-pattern>/create.do</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+    <servlet-name>PlaceBets</servlet-name>
+    <servlet-class>Betting.PlaceBets</servlet-class>
+
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>PlaceBets</servlet-name>
+    <url-pattern>/placebets.do</url-pattern>
+</servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>Simulator</servlet-name>
+    <servlet-class>Betting.Update</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Simulator</servlet-name>
+    <url-pattern>/Update.do</url-pattern>
+
+</servlet-mapping>
+</web-app>
+<?target data?>
