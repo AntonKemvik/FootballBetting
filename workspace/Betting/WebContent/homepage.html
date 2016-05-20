@@ -78,10 +78,8 @@ function getValue(nbr){
   var sel = document.getElementById("select" + nbr);
   var opt = sel.options[sel.selectedIndex];
   var vb = document.getElementById("valueselect"+nbr);
-  alert(vb.value);
   document.getElementById("valueselect" + nbr).value = opt.value; 
   var va = document.getElementById("valueselect"+nbr);
-  alert(va.value);
 }
 </script>
 
@@ -111,7 +109,6 @@ function getValue(nbr){
   }
   #infoText {
     color: #adb7bd;
-    ;
     font-size: 12;
     font-style: italic;
     text-align: center;
@@ -131,7 +128,7 @@ function getValue(nbr){
     top: -33;
     text-align: center;
     margin: 0 auto;
-    width: 674px;
+      width: 67%;
     border: 1px solid black;
     border-radius: 1px;
     background: rgb(255, 255, 255);
@@ -149,7 +146,7 @@ function getValue(nbr){
   }
   div.form button {
     position: relative;
-    top: -44;
+    top: -44; /*ÄNDRA HÄR FÖR ATT FLYTTA KNAPPEN UPP/NER*/
     display: inline-block;
     color: black;
     border: 1px solid black;
@@ -165,7 +162,7 @@ function getValue(nbr){
     cursor: pointer;
   }
   .countdown {
-    position: relative;
+    position: relative;width:
     display: inline-block;
     width: 30%;
     color: black;
@@ -203,22 +200,17 @@ function getValue(nbr){
   #cssmenu ul li,
   #cssmenu ul li a,
   #cssmenu #menu-button {
+    margin: 0 auto;
+    text-align: center;
     position: center;
-    margin: 0;
-    padding: 0;
-    border: 0;
     list-style: none;
-    line-height: 1;
-    display: block;
     position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    height: 100px;
   }
   #cssmenu:after,
   #cssmenu > ul:after {
     content: ".";
-    display: block;
+    display: inline-block;
     clear: both;
     visibility: hidden;
     line-height: 0;
@@ -230,7 +222,8 @@ function getValue(nbr){
   #cssmenu {
     top: -30;
     margin: 0 auto;
-    width: 720px;
+    width: 44%;
+    height: 50px;
     border: 3px solid black;
     border-radius: 3px;
     font-family: 'Oswald', sans-serif;
@@ -238,6 +231,8 @@ function getValue(nbr){
     background: rgb(255, 255, 255);
     /* Fallback for older browsers without RGBA-support */
     background: rgba(30, 30, 30, 0.2);
+    text-align: center;
+
   }
   #cssmenu > ul > li {
     float: left;
@@ -255,6 +250,7 @@ function getValue(nbr){
   }
   #cssmenu > ul > li > a {
     padding: 20px 25px;
+    display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
     text-decoration: none;
@@ -356,7 +352,7 @@ function getValue(nbr){
     display: none;
   }
   #nav ul.visible {
-    display: block;
+    display: inline-block;
   }
   .table {
     BORDER: 5;
@@ -401,29 +397,33 @@ function getValue(nbr){
 }
 </style>
 </head>
-</head>
 
 <body id="body">
-  <p id="titleText">FRIENDLY BETTING</p>
+ <p id="titleText">FRIENDLY BETTING</p>
   <div id='cssmenu'>
-    <ul>
+    <ul class="main-nav">
       <li id="home" class='active'> <a href='#' onclick="showHome()">HOME</a></li>
-      <li id="manage"> <a href='#' onclick="showManage()">MANAGE LEAGUES</a></li>
-      <ul></ul>
-      <li id="leagues"> <a href='#' onclick="showLeagues()">YOUR LEAGUES</a></li>
+      <li id="leagues"> <a href='#' onclick="showLeagues()">LEADERBOARD</a></li>
       <li id="bet"> <a href='#' onclick="showBets()">PLACE BETS</a></li>
       <li id="logout"> <a href='login.html' onclick="toggleTable(logout)">LOG OUT</a></li>
     </ul>
   </div>
 
   <div id="homeDiv" class='form'>
-    <p id="infoText"> THIS IS A BETTING SITE WHERE YOU CAN BET ON FOOTBALL MATCHES
-      <p id="infoText"> YOU <a href='#' style="color:white" onclick="showBets()"> BET</a> 1/X/2 ON A SELECTED NUMBER OF MATCHES</p>
-      <p id="infoText"> A CORRECT BET WILL GAIN YOU 1 POINT</p>
-      <p id="infoText"> HEAD OVER TO <a href='#' style="color:white" onclick="showLeagues()"> LEAGUES</a> TO SEE HOW YOU DO COMPARED TO YOUR FRIENDS</p>
+    FRIENDLY BETTING
+    <p id="infoText"> A SIMPLIFIED BETTING SITE WHERE YOU BET ON FOOTBALL MATCHES
+      <p id="infoText"> YOU <a href='#' style="color:white" onclick="showBets()"> BET</a> 1/X/2 ON A NUMBER OF MATCHES FROM A FOOTBALL LEAGUE</p>
+      <p id="infoText"> A CORRECT BET WILL GAIN YOU 1 POINT. HEAD OVER TO <a href='#' style="color:white" onclick="showLeagues()"> LEAGUES</a> TO SEE HOW YOU DO </p>
+      <p id="infotext">COMPARED TO YOUR FRIENDS</p>
+      <br>
+      THE SOURCE CODE
+      <p id="infotext">THE SOURCE CODE CAN BE FOUND ON <a href='https://github.com/AntonKemvik/FootballBetting' style="color:white"> GITHUB</a></p>
+      <br>
+      THE GROUP
+      <p id="infotext"> THIS WEBSITE IS CREATED BY ANTON KEMVIK, NILS GOKSÖR, ISAK AMUNDSSON OCH KRISTOFFER MÅRTENSSON</P>
     </div>
     <div id="manageDiv" class='form' style="display:none;">
-      SEARCH FOR AN EXISTING LEAGUE OR CREATE YOUR OWN
+      FRIENDLY BETTING
       <p id="infoText">NOT IMPLEMENTED AT THIS TIME</p>
     </div>
     <div id="leaguesDiv" class='form' style="display:none;">
@@ -434,22 +434,22 @@ function getValue(nbr){
           <TH>USERNAME</TH>
           <TH>POINTS</TH>
         </TR>
-        <TR ALIGN="CENTER">
+        <TR id="rank1" ALIGN="CENTER">
           <TD>1</TD>
           <TD>Nils</TD>
           <TD>9</TD>
         </TR>
-        <TR ALIGN="CENTER">
+        <TR id="rank2" ALIGN="CENTER">
           <TD>2</TD>
           <TD>KRICKAN123</TD>
           <TD>4</TD>
         </TR>
-        <TR ALIGN="CENTER">
+        <TR id="rank3" ALIGN="CENTER">
           <TD>3</TD>
           <TD>ANTON</TD>
           <TD>2</TD>
         </TR>
-        <TR ALIGN="CENTER">
+        <TR id="rank4" ALIGN="CENTER">
           <TD>4</TD>
           <TD>ISAK</TD>
           <TD>2</TD>
@@ -507,7 +507,7 @@ function getValue(nbr){
             <TD id="home31">Liverpool</TD>
             <TD id="home32">Arsenal</TD>
             <TD id="bet3">
-              <select id="select3" class="dropdown"onchange="getValue("3")"type="input">
+              <select id="select3" class="dropdown"onchange="getValue(3)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -523,7 +523,7 @@ function getValue(nbr){
             <TD id="home41">Liverpool</TD>
             <TD id="home42">Arsenal</TD>
             <TD id="bet4">
-              <select id="select4" class="dropdown"onchange="getValue("4")"type="input">
+              <select id="select4" class="dropdown"onchange="getValue(4)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -539,7 +539,7 @@ function getValue(nbr){
             <TD id="home51">Liverpool</TD>
             <TD id="home52">Arsenal</TD>
             <TD id="bet5">
-              <select id="select5" class="dropdown"onchange="getValue("5")"type="input">
+              <select id="select5" class="dropdown"onchange="getValue(5)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -555,7 +555,7 @@ function getValue(nbr){
             <TD id="home61">Liverpool</TD>
             <TD id="home62">Arsenal</TD>
             <TD id="bet6">
-              <select id="select6" class="dropdown"onchange="getValue("6")"type="input">
+              <select id="select6" class="dropdown"onchange="getValue(6)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -571,7 +571,7 @@ function getValue(nbr){
             <TD id="home71">Liverpool</TD>
             <TD id="home72">Arsenal</TD>
             <TD id="bet7">
-              <select id="select7" class="dropdown"onchange="getValue("7")"type="input">
+              <select id="select7" class="dropdown"onchange="getValue(7)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -587,7 +587,7 @@ function getValue(nbr){
             <TD id="home81">Liverpool</TD>
             <TD id="home82">Arsenal</TD>
             <TD id="bet8">
-              <select id="select8" class="dropdown"onchange="getValue("8")"type="input">
+              <select id="select8" class="dropdown"onchange="getValue(8)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -603,7 +603,7 @@ function getValue(nbr){
             <TD id="home91">Liverpool</TD>
             <TD id="home92">Arsenal</TD>
             <TD id="bet9">
-              <select id="select9" class="dropdown"onchange="getValue("9")"type="input">
+              <select id="select9" class="dropdown"onchange="getValue(9)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -619,7 +619,7 @@ function getValue(nbr){
             <TD id="home101">Liverpool</TD>
             <TD id="home102">Arsenal</TD>
             <TD id="bet10">
-              <select id="select10" class="dropdown"onchange="getValue("10")"type="input">
+              <select id="select10" class="dropdown"onchange="getValue(10)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -635,7 +635,7 @@ function getValue(nbr){
             <TD id="home111">Liverpool</TD>
             <TD id="home112">Arsenal</TD>
             <TD id="bet11">
-              <select id="select11" class="dropdown"onchange="getValue("11")"type="input">
+              <select id="select11" class="dropdown"onchange="getValue(11)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -651,7 +651,7 @@ function getValue(nbr){
             <TD id="home121">Liverpool</TD>
             <TD id="home122">Arsenal</TD>
             <TD id="bet11">
-              <select id="select11" class="dropdown"onchange="getValue("12")"type="input">
+              <select id="select11" class="dropdown"onchange="getValue(12)"type="input">
                 <option value="" disabled selected hidden>BET</option>
                 <option value="1">1</option>
                 <option value="X">X</option>
@@ -667,7 +667,7 @@ function getValue(nbr){
           <TD id="home131">Liverpool</TD>
           <TD id="home132">Arsenal</TD>
           <TD id="bet13">
-            <select id="select13" class="dropdown"onchange="getValue("13")"type="input">
+            <select id="select13" class="dropdown"onchange="getValue(13)"type="input">
               <option value="" disabled selected hidden>BET</option>
               <option value="1">1</option>
               <option value="X">X</option>
@@ -683,7 +683,7 @@ function getValue(nbr){
           <TD id="home141">Liverpool</TD>
           <TD id="home142">Arsenal</TD>
           <TD id="bet14">
-            <select id="select14" class="dropdown"onchange="getValue("14")"type="input">
+            <select id="select14" class="dropdown"onchange="getValue(14)"type="input">
               <option value="" disabled selected hidden>BET</option>
               <option value="1">1</option>
               <option value="X">X</option>
@@ -744,6 +744,9 @@ function getValue(nbr){
         </table>
         <button id="confirmButton">CONFIRM BETS</button>
       </form>
+      <form action="Update.do" method="post">
+          <button>simulate</button>
+        </form>
       <script id="script2">
       /*  Change the items below to create your countdown target date and announcement once the target date and time are reached.  */
       var current = "MATCHDAY HAS BEGUN!"; //—>enter what you want the script to display when the target date and time are reached, limit to 20 characters
